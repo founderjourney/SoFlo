@@ -24,11 +24,17 @@ export default function Partners() {
         <div className="reveal reveal-delay-1 flex flex-wrap items-center justify-center gap-10 sm:gap-16">
           {logos.map((src, i) => (
             <div key={i} className="group">
-              <img
-                src={src}
-                alt={`Partner ${i + 1}`}
-                className="h-10 sm:h-14 object-contain grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
-              />
+              <picture>
+                <source srcSet={src.replace('.png', '.webp')} type="image/webp" />
+                <img
+                  src={src}
+                  alt={`Partner ${i + 1}`}
+                  width={120}
+                  height={56}
+                  loading="lazy"
+                  className="h-10 sm:h-14 object-contain grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
+                />
+              </picture>
             </div>
           ))}
         </div>

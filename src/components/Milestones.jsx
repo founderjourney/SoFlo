@@ -58,22 +58,23 @@ function AnimatedCounter({ value, prefix = '', suffix = '', label, icon }) {
         if (entry.isIntersecting && !animated.current) {
           animated.current = true
           const duration = 2000
-          const steps = 60
-          const increment = value / steps
-          let current = 0
-          const interval = setInterval(() => {
-            current += increment
-            if (current >= value) {
-              setCount(value)
-              clearInterval(interval)
+          let start = null
+          const step = (timestamp) => {
+            if (!start) start = timestamp
+            const progress = Math.min((timestamp - start) / duration, 1)
+            const current = progress * value
+            setCount(
+              Number.isInteger(value)
+                ? Math.floor(current)
+                : parseFloat(current.toFixed(1))
+            )
+            if (progress < 1) {
+              requestAnimationFrame(step)
             } else {
-              setCount(
-                Number.isInteger(value)
-                  ? Math.floor(current)
-                  : parseFloat(current.toFixed(1))
-              )
+              setCount(value)
             }
-          }, duration / steps)
+          }
+          requestAnimationFrame(step)
         }
       },
       { threshold: 0.3 }

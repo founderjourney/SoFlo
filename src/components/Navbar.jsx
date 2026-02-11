@@ -29,11 +29,16 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <a href="#home" className="shrink-0 group">
-            <img
-              src="/images/SoFlo-Lenders-logo-design-long-clear.png"
-              alt="SoFlo Lenders"
-              className="h-9 transition-transform duration-300 group-hover:scale-105"
-            />
+            <picture>
+              <source srcSet="/images/SoFlo-Lenders-logo-design-long-clear.webp" type="image/webp" />
+              <img
+                src="/images/SoFlo-Lenders-logo-design-long-clear.png"
+                alt="SoFlo Lenders"
+                width={200}
+                height={36}
+                className="h-9 transition-transform duration-300 group-hover:scale-105"
+              />
+            </picture>
           </a>
 
           {/* Desktop */}

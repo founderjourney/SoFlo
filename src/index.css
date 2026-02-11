@@ -269,3 +269,26 @@
   animation: hero-scale-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
   animation-delay: 0.3s;
 }
+
+/* Reduce animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .float, .float-delayed {
+    animation: none;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .hero-fade-up, .hero-fade-right, .hero-scale-in {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* Reduce heavy animations on mobile for performance */
+@media (max-width: 767px) {
+  .float, .float-delayed {
+    animation-duration: 8s;
+  }
+}

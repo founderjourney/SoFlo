@@ -48,11 +48,17 @@ export default function About() {
             >
               {/* Image */}
               <div className="relative overflow-hidden">
-                <img
-                  src={card.image}
-                  alt={card.title}
-                  className="w-full h-52 object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+                <picture>
+                  <source srcSet={card.image.replace('.png', '.webp')} type="image/webp" />
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    width={800}
+                    height={534}
+                    loading="lazy"
+                    className="w-full h-52 object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </picture>
                 <div className="absolute inset-0 bg-gradient-to-t from-soflo-card via-transparent to-transparent" />
               </div>
 

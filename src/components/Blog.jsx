@@ -52,11 +52,17 @@ export default function Blog() {
             >
               {/* Image */}
               <div className="relative overflow-hidden h-56">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+                <picture>
+                  <source srcSet={post.image.replace('.jpg', '.webp')} type="image/webp" />
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    width={800}
+                    height={534}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </picture>
                 <div className="absolute inset-0 bg-gradient-to-t from-soflo-card via-soflo-card/30 to-transparent" />
 
                 {/* Categories overlay */}

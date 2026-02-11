@@ -6,11 +6,17 @@ export default function SmartFinancing() {
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
         <div className="reveal">
-          <img
-            src="/images/SoFlo-Lenders-logo-design-long-clear.png"
-            alt="SoFlo Lenders"
-            className="h-10 sm:h-12 mx-auto mb-8 drop-shadow-[0_0_20px_rgba(10,220,228,0.15)]"
-          />
+          <picture>
+            <source srcSet="/images/SoFlo-Lenders-logo-design-long-clear.webp" type="image/webp" />
+            <img
+              src="/images/SoFlo-Lenders-logo-design-long-clear.png"
+              alt="SoFlo Lenders"
+              width={200}
+              height={36}
+              loading="lazy"
+              className="h-10 sm:h-12 mx-auto mb-8 drop-shadow-[0_0_20px_rgba(10,220,228,0.15)]"
+            />
+          </picture>
         </div>
 
         <div className="reveal reveal-delay-1">

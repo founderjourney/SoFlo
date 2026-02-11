@@ -22,21 +22,21 @@ export default function Hero() {
         }}
       />
 
-      {/* Floating particles */}
+      {/* Floating particles — half hidden on mobile for performance */}
       <div className="absolute inset-0 pointer-events-none">
         {[
-          { top: '15%', left: '10%', size: 3, delay: '0s', dur: '8s', variant: 1 },
-          { top: '25%', left: '85%', size: 2, delay: '2s', dur: '10s', variant: 2 },
-          { top: '60%', left: '15%', size: 2, delay: '1s', dur: '9s', variant: 2 },
-          { top: '70%', left: '75%', size: 3, delay: '3s', dur: '7s', variant: 1 },
-          { top: '40%', left: '50%', size: 2, delay: '4s', dur: '11s', variant: 2 },
-          { top: '80%', left: '40%', size: 1.5, delay: '0.5s', dur: '12s', variant: 1 },
-          { top: '10%', left: '60%', size: 2, delay: '1.5s', dur: '9s', variant: 1 },
-          { top: '55%', left: '90%', size: 1.5, delay: '2.5s', dur: '10s', variant: 2 },
+          { top: '15%', left: '10%', size: 3, delay: '0s', dur: '8s', variant: 1, mobile: true },
+          { top: '25%', left: '85%', size: 2, delay: '2s', dur: '10s', variant: 2, mobile: false },
+          { top: '60%', left: '15%', size: 2, delay: '1s', dur: '9s', variant: 2, mobile: true },
+          { top: '70%', left: '75%', size: 3, delay: '3s', dur: '7s', variant: 1, mobile: false },
+          { top: '40%', left: '50%', size: 2, delay: '4s', dur: '11s', variant: 2, mobile: true },
+          { top: '80%', left: '40%', size: 1.5, delay: '0.5s', dur: '12s', variant: 1, mobile: false },
+          { top: '10%', left: '60%', size: 2, delay: '1.5s', dur: '9s', variant: 1, mobile: true },
+          { top: '55%', left: '90%', size: 1.5, delay: '2.5s', dur: '10s', variant: 2, mobile: false },
         ].map((p, i) => (
           <div
             key={i}
-            className="absolute rounded-full bg-soflo-cyan"
+            className={`absolute rounded-full bg-soflo-cyan${p.mobile ? '' : ' hidden md:block'}`}
             style={{
               top: p.top,
               left: p.left,
@@ -60,11 +60,16 @@ export default function Hero() {
           <div className="lg:col-span-7 text-center lg:text-left">
             {/* Logo isotipo */}
             <div className="hero-fade-up hero-fade-up-d1 mb-6">
-              <img
-                src="/images/logo-only-clear-full.png"
-                alt="SoFlo Lenders Logo"
-                className="w-28 sm:w-36 mx-auto lg:mx-0 drop-shadow-[0_0_40px_rgba(10,220,228,0.25)] float"
-              />
+              <picture>
+                <source srcSet="/images/logo-only-clear-full.webp" type="image/webp" />
+                <img
+                  src="/images/logo-only-clear-full.png"
+                  alt="SoFlo Lenders Logo"
+                  width={512}
+                  height={331}
+                  className="w-28 sm:w-36 mx-auto lg:mx-0 drop-shadow-[0_0_40px_rgba(10,220,228,0.25)] float"
+                />
+              </picture>
             </div>
 
             {/* Welcome label */}
@@ -187,11 +192,17 @@ export default function Hero() {
               </svg>
 
               {/* Partner photo */}
-              <img
-                src="/images/049-MqMGf9ZbdXg-removebg-preview.png"
-                alt="SoFlo Lenders Partner"
-                className="relative z-10 w-[88%] max-w-[620px] drop-shadow-[0_20px_60px_rgba(0,0,0,0.6)] float-delayed"
-              />
+              <picture>
+                <source srcSet="/images/049-MqMGf9ZbdXg-removebg-preview.webp" type="image/webp" />
+                <img
+                  src="/images/049-MqMGf9ZbdXg-removebg-preview.png"
+                  alt="SoFlo Lenders Partner"
+                  width={500}
+                  height={500}
+                  fetchPriority="high"
+                  className="relative z-10 w-[88%] max-w-[620px] drop-shadow-[0_20px_60px_rgba(0,0,0,0.6)] float-delayed"
+                />
+              </picture>
 
               {/* Floating glass badges */}
               <div className="absolute top-[8%] -left-2 sm:left-[2%] glass rounded-xl px-4 py-2.5 text-center hero-fade-right z-20" style={{ animationDelay: '1.5s' }}>
